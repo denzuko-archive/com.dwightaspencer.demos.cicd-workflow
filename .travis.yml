@@ -3,11 +3,10 @@ node_js:
     - 4.2.1
 install:
     - npm install
-script: npm start
+script: npm test
 branches:
   only:
     - qa
-    - develop
     - deploy
 deploy:
   provider: heroku

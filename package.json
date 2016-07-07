@@ -1,0 +1,35 @@
+{
+  "name": "cicd-demo",
+  "version": "0.0.1",
+  "description": "Demo CiCD project",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "bootstrap": "^3.3.6",
+    "morgan": "^1.7.0",
+    "pm": "^2.2.6",
+    "retrospec": "^0.0.3",
+    "ng-admin": "^1.0.0-alpha2",
+    "path": "^0.12.7",
+    "serve-favicon": "^2.3.0",
+    "shisha": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow.git"
+  },
+  "author": "Dwight A Spencer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow/issues"
+  },
+  "homepage": "https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow#readme"
+}

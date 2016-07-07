@@ -1,0 +1,16 @@
+doctype html
+html(lang='en', ng-app='admin')
+  head
+    meta(charset='UTF-8')
+    title= title
+    meta(name="viewport", content="width=device-width")
+    link(rel='stylesheet', href='/static/ng-admin/build/ng-admin.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/layout.css')
+    script(src='/static/jquery/dist/jquery.min.js', type="application/javascript")
+    script(src='/static/lodash/lodash.min.js', type="application/javascript")
+    script(src="/static/ng-admin/build/ng-admin.min.js", type="text/javascript")
+    style(type="text/css").
+      .ng-admin-entity-posts .ng-admin-column-title { max-width: 250px; }
+  body
+    block content

@@ -2,7 +2,7 @@
 
 var api       = require('./server'),
     ux        = require('./client'),
-    config    = require('./config/application');
+    config    = require('./config');
     
 var api_port  = parseInt(process.env.PORT, 10) || parseInt(config.api.port, 10),
     ux_port   = parseInt(process.env.PORT, 10)+1 || parseInt(config.ux.port, 10)+1,

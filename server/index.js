@@ -10,58 +10,19 @@ var express         = require('express'),
     morgan          = require('morgan'),
     index           = require('./routes/index'),
     config          = require('../config'),
-    database_url    = process.env.DB_URL || config.db.url,
+    database_url    = process.env.DB_URL || config.database.url,
     app             = express(),
-    server          = require('http').createServer(app),
-    io              = require('socket.io')(server);
+    server          = require('http').createServer(app);
 
 module.exports = app;
-
-// Set socket.io listeners.
-io.on('connection', function (socket) {
-  console.log('[ws] socket connection established');
-
-  socket.on('disconnect', function () {
-    console.log('[ws] socket connection closed');
-  });
-});
 
 app.set('jsonp callback', true);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json({extended: true}));
-app.use(validator({
-  customValidators: {
-    isDefined: function (value) {
-      return (typeof(value) !== 'undefined' && value);
-    },
-    isString: function (value) {
-      return (typeof(value !== 'String' && value));
-    },
-    isArray: function (value) {
-      return Array.isArray(value);
-    },
-    gte: function(param, num) {
-      return param >= num;
-    },
-    lte: function(param, num) {
-      return param <= num;
-    }
-  }
-}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
-var whitelist = ['http://ioinet-api-denzuko.c9users.io/', 'http://ioinet-api-denzuko.c9users.io:8081/',  'http://ioinet-api-denzuko.c9users.io:8080/'];
-var corsOptions = {
-  origin: function(origin, callback){
-    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
-    callback(null, originIsWhitelisted);
-  }
-};
-
-app.use(cors(corsOptions));
 
 app.use(bodyParser.json({type: 'application/vnd.ioinet+json', strict: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -94,17 +55,11 @@ if ('production' == app.get('env')) {
   app.use(morgan('combined'));
 }
 
-// authentications
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Make our db accessible to our routers
 app.use(function (req,res,next) {
   req.server     = server;
-  req.db         = db;
-  req.io         = io;
-  req.telemetry  = telemetry;
-  req.scheduling = scheduling;
+//  req.db         = db;
   next();
 });
 

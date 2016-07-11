@@ -1,3 +1,7 @@
+secrets:
+  heroku: &herokuSecrets
+    api_key:
+      secure: MpSSRcmWsCken1vsZpezW0WAZeZ1UNzBqSjVqPrunWSX0FnIw61F4mWd2PPWEsJ32AXgaY3yXWqYkUhbYxDPaRTpMUcb1wJDRcY0rsC+905kYwY69qeogVBXZxKUJotEe+WWXK93hpPCNFqp8WmzI82FwQz4spSPusLSSWfuKat5/qz2edjmnFdyxtPCTZ+hRmSK+p17Pge8bTgF2iuDyUnzeD/rFRC/alWEJ5/jQFfHX6or6fgUlh8yetqz9f3L3O25KsKJQG2DgukTGi2ns9M5qOUXByHPJWh8zWP9NIpcQeD1OLy4UbGM1xq+P1/6O7KvetfvZA+512inuwJN4VyZE20LhB5xUCnLYFo0xVjWuVh07pFZcupfUfwaa83aJxrks0PC7O6L+0zyaBgyjrLTtUPqkSic7eIC6UDrmWXjGMIN19lmrbBgcMJSuY/21sdqyRJZnyY7u3LqZHbKQefV0w6ghrN0jtypcascNNGSX16nObyegU7Ep/Er30UPCQae9Q7edP1aHIrrT3MeUOWabdsNiXi1R/H2fwpEoDWvV7su9vYlZtLACRrWUwMyF1jXWSrfazIQbwvqRygO8p5IySr6hXdsrX8CaSa7dGjrfCRB4TziZfciQIOIgrHy5ggwgKEJ8Q8xchnuH3mcskAKkz41WVmuKXn00Xz2Xqk=
 language: node_js
 node_js:
     - 4.2.1
@@ -9,10 +13,15 @@ branches:
     - qa
     - deploy
 deploy:
-  provider: heroku
-  api_key:
-    secure: MpSSRcmWsCken1vsZpezW0WAZeZ1UNzBqSjVqPrunWSX0FnIw61F4mWd2PPWEsJ32AXgaY3yXWqYkUhbYxDPaRTpMUcb1wJDRcY0rsC+905kYwY69qeogVBXZxKUJotEe+WWXK93hpPCNFqp8WmzI82FwQz4spSPusLSSWfuKat5/qz2edjmnFdyxtPCTZ+hRmSK+p17Pge8bTgF2iuDyUnzeD/rFRC/alWEJ5/jQFfHX6or6fgUlh8yetqz9f3L3O25KsKJQG2DgukTGi2ns9M5qOUXByHPJWh8zWP9NIpcQeD1OLy4UbGM1xq+P1/6O7KvetfvZA+512inuwJN4VyZE20LhB5xUCnLYFo0xVjWuVh07pFZcupfUfwaa83aJxrks0PC7O6L+0zyaBgyjrLTtUPqkSic7eIC6UDrmWXjGMIN19lmrbBgcMJSuY/21sdqyRJZnyY7u3LqZHbKQefV0w6ghrN0jtypcascNNGSX16nObyegU7Ep/Er30UPCQae9Q7edP1aHIrrT3MeUOWabdsNiXi1R/H2fwpEoDWvV7su9vYlZtLACRrWUwMyF1jXWSrfazIQbwvqRygO8p5IySr6hXdsrX8CaSa7dGjrfCRB4TziZfciQIOIgrHy5ggwgKEJ8Q8xchnuH3mcskAKkz41WVmuKXn00Xz2Xqk=
-  app:
-    master: cicd-demo-stage
-    production: cicd-demo-production
-  on: deploy
+  - provider: heroku
+    <<: *herokuSecrets
+    app: 
+      master: cicd-demo-stage
+    on:
+      branch: qa
+  - provider: heroku
+    <<: *herokuSecrets
+    app: 
+      production: cicd-demo-production
+    on:
+      branch: deploy

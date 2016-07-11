@@ -1,0 +1,7 @@
+{
+  "name": "cicd-demo",
+  "description": "Modern CI/CD workflow demo with QA Veting and smoke tests for nodejs apps",
+  "repository": "https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "static", "regression", "tests", "demo"]
+}

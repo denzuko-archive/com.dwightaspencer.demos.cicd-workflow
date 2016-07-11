@@ -13,13 +13,13 @@ describe('loading ux express', function () {
     server.close();
   });
   
-  it('responds to GET /', function testSlash(done) {
+  it('responds to GET /', function testUxSlash(done) {
       request(server)
         .get('/')
         .expect(200, done);
   });
   
-  it('responds with 404 on everything else', function testPath(done) {
+  it('responds with 404 on everything else', function testUxPath(done) {
       request(server)
         .get('/foo/bar')
         .expect(404, done);

@@ -14,6 +14,12 @@ describe('Ensure google is online', function () {
   it('Content-Type of plain/html from GET /', function testContentType(done) {
     request(base).get('/')
       .expect('Content-Type', /html/)
-      .end(done)
+      .end(done);
+  });
+  
+  it('Should return status 200 from GET /robots.txt', function testRobotsText(done) {
+    request(base).get('/robots.txt')
+      .expect(200)
+      .end(done);
   });
 });

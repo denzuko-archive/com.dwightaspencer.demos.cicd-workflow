@@ -13,7 +13,7 @@ describe('loading api express', function () {
     server.close();
   });
   
-  it('responds to GET /', function testSlash(done) {
+  it('responds to GET /', function testApiSlash(done) {
       request(server)
         .get('/')
         .expect('Content-Type', /json/)
@@ -34,7 +34,7 @@ describe('loading api express', function () {
         .expect(200, done);
   });
   
-  it('responds with 404 on everything else', function testPath(done) {
+  it('responds with 404 on everything else', function testApiPath(done) {
       request(server)
         .get('/testing/regression/')
         .expect(404, done);

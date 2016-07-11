@@ -1,12 +1,12 @@
-var request = require('supertest');
+var request   = require('supertest'),
+    config    = require('../config'),
+    apiServer = require('../server');
 
 describe('loading api express', function () {
-  var server, serverClass, config;
+  var server;
   
   beforeEach(function () {
-    config = require('../config');
-    serverClass = require('../server');
-    server = new serverClass(config);
+    server = new apiServer(config);
   });
   
   afterEach(function () {
@@ -16,12 +16,27 @@ describe('loading api express', function () {
   it('responds to GET /', function testSlash(done) {
       request(server)
         .get('/')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+  });
+  
+  it('responds to GET /v1', function testVersionEndpoint(done) {
+      request(server)
+        .get('/v1')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+  });
+  
+  it('should return json on GET /v1', function testJsonReturnOnRoot(done) {
+      request(server)
+        .get('/v1')
+        .expect('Content-Type', /json/)
         .expect(200, done);
   });
   
   it('responds with 404 on everything else', function testPath(done) {
       request(server)
-        .get('/foo/bar')
+        .get('/testing/regression/')
         .expect(404, done);
   });
 });

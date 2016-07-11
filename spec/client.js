@@ -1,12 +1,12 @@
-var request = require('supertest');
+var request = require('supertest'),
+    config  = require('../config'),
+    uxServer = require('../client');
 
 describe('loading ux express', function () {
-  var server, serverClass, config;
+  var server;
   
   beforeEach(function () {
-    config = require('../config');
-    serverClass = require('../client');
-    server = new serverClass(config);
+    server = new uxServer(config);
   });
   
   afterEach(function () {

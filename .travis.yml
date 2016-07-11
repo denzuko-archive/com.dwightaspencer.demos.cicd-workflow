@@ -1,6 +1,13 @@
 language: node_js
 node_js:
-- 4.2.1
+    - 4.2.1
+install:
+    - npm install
+script: npm test
+branches:
+  only:
+    - qa
+    - deploy
 deploy:
   provider: heroku
   api_key:

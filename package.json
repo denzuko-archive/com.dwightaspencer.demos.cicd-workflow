@@ -24,12 +24,15 @@
     "serve-favicon": "^2.3.0",
     "shisha": "^1.1.0",
     "should": "^9.0.2",
-    "supertest": "^1.2.0"
+    "supertest": "^1.2.0",
+    "snyk": "^1.80.1"
   },
   "devDependencies": {},
   "scripts": {
     "test": "mocha -spec spec/",
-    "start": "node index.js"
+    "start": "node index.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -40,5 +43,6 @@
   "bugs": {
     "url": "https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow/issues"
   },
-  "homepage": "https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow#readme"
+  "homepage": "https://github.com/denzuko/com.dwightaspencer.demos.cicd-workflow#readme",
+  "snyk": true
 }

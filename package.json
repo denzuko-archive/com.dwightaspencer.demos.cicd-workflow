@@ -24,7 +24,7 @@
     "serve-favicon": "^2.3.0",
     "shisha": "^1.1.0",
     "should": "^9.0.2",
-    "supertest": "^1.2.0",
+    "supertest": "^2.0.0",
     "snyk": "^1.80.1"
   },
   "devDependencies": {},

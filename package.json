@@ -25,7 +25,7 @@
     "shisha": "^1.1.0",
     "should": "^9.0.2",
     "supertest": "^3.0.0",
-    "snyk": "^1.145.0"
+    "snyk": "^1.231.0"
   },
   "devDependencies": {},
   "scripts": {
